@@ -5,9 +5,19 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Layout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.view.ViewGroup.LayoutParams;
+
+import org.w3c.dom.Text;
+
+import java.util.Random;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -53,7 +63,7 @@ public class ForecastFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        };
     }
 
     @Override
@@ -62,8 +72,53 @@ public class ForecastFragment extends Fragment {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_forecast, container, false);
         View view = inflater.inflate(R.layout.fragment_forecast, container, false);
-//        view.setBackgroundColor(Color.parseColor("#f2dcbb"));
         view.setBackgroundColor(getResources().getColor(R.color.colorBack));
+
+        LinearLayout llmain = (LinearLayout) view.findViewById(R.id.linearParent);
+        String[] idList = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+        int[] iconSet = {R.drawable.sun, R.drawable.windy, R.drawable.cloud, R.drawable.rain};
+        for(int i =0 ; i<idList.length; i++) {
+            LinearLayout ll = new LinearLayout(this.getActivity());
+            ll.setOrientation(LinearLayout.HORIZONTAL);
+            LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    0, 1.0f
+            );
+            param.setMargins(20, 20, 20, 20);
+            ll.setLayoutParams(param);
+
+            TextView txt = new TextView(this.getContext());
+            txt.setText(idList[i]);
+            LinearLayout.LayoutParams paramDay = new LinearLayout.LayoutParams(
+                    0, LayoutParams.MATCH_PARENT, 1.0f
+            );
+            txt.setTextSize(20);
+            txt.setGravity(Gravity.CENTER);
+            txt.setLayoutParams(paramDay);
+            ll.addView(txt);
+
+            ImageView imgWeather = new ImageView(this.getContext());
+            LinearLayout.LayoutParams paramImg = new LinearLayout.LayoutParams(
+                    0, LayoutParams.WRAP_CONTENT, 1.0f
+            );
+            Random random = new Random(System.currentTimeMillis());
+            imgWeather.setImageResource(iconSet[random.nextInt(iconSet.length-1)]);
+            imgWeather.setLayoutParams(paramImg);
+            imgWeather.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            ll.addView(imgWeather);
+
+            TextView place = new TextView(this.getContext());
+            place.setText("Hanoi City\n30°C");
+            place.setTextSize(20);
+            place.setGravity(Gravity.LEFT);
+            LinearLayout.LayoutParams paramPlace = new LinearLayout.LayoutParams(
+                    0, LayoutParams.WRAP_CONTENT, 1.0f
+            );
+            place.setLayoutParams(paramPlace);
+            ll.addView(place);
+
+            llmain.addView(ll);
+        }
         return view;
     }
 }
