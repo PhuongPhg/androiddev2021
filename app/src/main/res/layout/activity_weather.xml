@@ -7,4 +7,9 @@
     tools:context=".WeatherActivity">
 
     <include layout="@layout/fragment_forecast" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activity_weather_layout" />
 </androidx.constraintlayout.widget.ConstraintLayout>

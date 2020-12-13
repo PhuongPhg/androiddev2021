@@ -1,14 +1,15 @@
 package vn.edu.usth.weather;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.nfc.Tag;
 import android.os.Bundle;
 
 import android.util.Log;
 import android.widget.Toast;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 
 public class WeatherActivity extends AppCompatActivity {
 
@@ -16,9 +17,19 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_weather);
-        if(savedInstanceState == null){
-        ForecastFragment forecast = new ForecastFragment();
-        getSupportFragmentManager().beginTransaction().add(R.id.container, forecast).commit();}
+        Fragment mainFragment = new ForecastFragment();
+        this.replaceFragment(mainFragment);
+//        if(savedInstanceState == null){
+//        ForecastFragment forecast = new ForecastFragment();
+//        getSupportFragmentManager().beginTransaction().add(R.id.container, forecast).commit();}
+    }
+
+
+    public void replaceFragment(Fragment finalFragment){
+        FragmentManager fragmentManager = this.getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.activity_weather_layout, finalFragment);
+        fragmentTransaction.commit();
     }
 
     @Override

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "687179004492",
+    "project_id": "testci-8c036",
+    "storage_bucket": "testci-8c036.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:687179004492:android:8697374d0bb3ccfd5cd2e9",
+        "android_client_info": {
+          "package_name": "vn.edu.usth.weather"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "687179004492-nfc1tila5qmur3ep0dgtc1abunbus64m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.edu.usth.weather",
+            "certificate_hash": "0d1979cd418be052299f716bb6b2fe60a46c57c8"
+          }
+        },
+        {
+          "client_id": "687179004492-6lgs5sbdvbc6q201othjl372vjor7tsd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXNbZm3uHdSie7xGOmVRMONVBO8mSHDio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "687179004492-6lgs5sbdvbc6q201othjl372vjor7tsd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
