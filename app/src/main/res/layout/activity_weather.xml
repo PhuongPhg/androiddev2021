@@ -6,10 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".WeatherActivity">
 
-    <include layout="@layout/fragment_forecast" />
+<!--    <include layout="@layout/fragment_forecast" />-->
 
-    <FrameLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activity_weather_layout" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/container">
+            <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="vn.edu.usth.weather.ForecastFragment" />
+            
+        </LinearLayout>
+<!--    <FrameLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/activity_weather_layout" />-->
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

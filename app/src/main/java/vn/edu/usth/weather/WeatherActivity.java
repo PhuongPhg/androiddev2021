@@ -28,7 +28,7 @@ public class WeatherActivity extends AppCompatActivity {
     public void replaceFragment(Fragment finalFragment){
         FragmentManager fragmentManager = this.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.activity_weather_layout, finalFragment);
+        fragmentTransaction.add(R.id.container, finalFragment);
         fragmentTransaction.commit();
     }
 

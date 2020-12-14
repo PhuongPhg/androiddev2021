@@ -82,7 +82,7 @@ public class ForecastFragment extends Fragment {
             ll.setOrientation(LinearLayout.HORIZONTAL);
             LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
-                    0, 1.0f
+                    200
             );
             param.setMargins(20, 20, 20, 20);
             ll.setLayoutParams(param);
