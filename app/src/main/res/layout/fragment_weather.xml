@@ -6,9 +6,28 @@
     tools:context=".WeatherFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hanoi"
+                android:textSize="17dp"
+                android:layout_alignParentRight="true"
+                android:paddingRight="15dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="30°C\nSunny"
+                android:textSize="17dp"
+                android:layout_alignParentLeft="true"
+                android:paddingLeft="15dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/cloud"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
 </FrameLayout>
