@@ -76,7 +76,8 @@ public class ForecastFragment extends Fragment {
 
         LinearLayout llmain = (LinearLayout) view.findViewById(R.id.linearParent);
         String[] idList = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
-        int[] iconSet = {R.drawable.sun, R.drawable.windy, R.drawable.cloud, R.drawable.rain};
+        int[] iconSet = {R.drawable.sun, R.drawable.enoughsunny,R.drawable.cloud, R.drawable.windy, R.drawable.rain,};
+
         for(int i =0 ; i<idList.length; i++) {
             LinearLayout ll = new LinearLayout(this.getActivity());
             ll.setOrientation(LinearLayout.HORIZONTAL);
@@ -97,18 +98,31 @@ public class ForecastFragment extends Fragment {
             txt.setLayoutParams(paramDay);
             ll.addView(txt);
 
+            int degreeMin = (int)(Math.random()*(35-15+1)+15);
+            int degreeMax = degreeMin + (int)(Math.random()*(3-1+1)+1);
+            int random;
+            if (degreeMin >= 30){
+                random = 0;
+            } else if(degreeMin >=25 && degreeMin <30){
+                random = 1;
+            } else if(degreeMin >=20 && degreeMin <25){
+                random = (int)(Math.random()*(3-2+1)+2);
+            } else{
+                random = 4;
+            }
             ImageView imgWeather = new ImageView(this.getContext());
             LinearLayout.LayoutParams paramImg = new LinearLayout.LayoutParams(
                     0, LayoutParams.WRAP_CONTENT, 1.0f
             );
-            Random random = new Random(System.currentTimeMillis());
-            imgWeather.setImageResource(iconSet[random.nextInt(iconSet.length-1)]);
+//            Random random = new Random(System.currentTimeMillis());
+//            imgWeather.setImageResource(iconSet[random.nextInt(iconSet.length-1)]);
+            imgWeather.setImageResource(iconSet[random]);
             imgWeather.setLayoutParams(paramImg);
             imgWeather.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             ll.addView(imgWeather);
 
             TextView place = new TextView(this.getContext());
-            place.setText("Hanoi City\n30°C");
+            place.setText("Hanoi City\n"+degreeMin+"°C - "+degreeMax+"°C");
             place.setTextSize(20);
             place.setGravity(Gravity.LEFT);
             LinearLayout.LayoutParams paramPlace = new LinearLayout.LayoutParams(
