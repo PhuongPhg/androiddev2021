@@ -7,28 +7,43 @@
     tools:context=".WeatherActivity">
 
 <!--    <include layout="@layout/fragment_forecast" />-->
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/container"
-            android:orientation="vertical">
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:name="vn.edu.usth.weather.WeatherFragment" />
-            <fragment
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:name="vn.edu.usth.weather.ForecastFragment" />
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:id="@+id/scrollview">
+    <androidx.viewpager.widget.ViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-        </LinearLayout>
-<!--    <FrameLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:id="@+id/activity_weather_layout" />-->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:id="@+id/container"-->
+<!--            android:orientation="vertical">-->
+<!--            <fragment-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:name="vn.edu.usth.weather.WeatherFragment" />-->
+<!--            <fragment-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:name="vn.edu.usth.weather.ForecastFragment" />-->
+
+<!--        <fragment-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:name="vn.edu.usth.weather.WeatherAndForecastFragment"/>-->
+<!--        </LinearLayout>-->
+
+
+    </androidx.viewpager.widget.ViewPager>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
