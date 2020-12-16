@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
+
+import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -49,6 +51,9 @@ public class WeatherActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(viewPager);
 //        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+
+        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.ashitanohikari);
+        mediaPlayer.start(); // no need to call prepare(); create() does that for you
     }
     private void addTabs(ViewPager viewPager){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
