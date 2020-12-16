@@ -7,22 +7,20 @@
     tools:context=".WeatherActivity">
 
 <!--    <include layout="@layout/fragment_forecast" />-->
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        android:id="@+id/scrollview">
+
     <androidx.viewpager.widget.ViewPager
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        android:isScrollContainer="true">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-
+    </androidx.viewpager.widget.ViewPager>
 <!--        <LinearLayout-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="match_parent"-->
@@ -44,6 +42,4 @@
 <!--        </LinearLayout>-->
 
 
-    </androidx.viewpager.widget.ViewPager>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
