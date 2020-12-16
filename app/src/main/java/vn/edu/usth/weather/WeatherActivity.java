@@ -7,10 +7,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +27,7 @@ import java.util.List;
 
 public class WeatherActivity extends AppCompatActivity {
 
+    MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +56,10 @@ public class WeatherActivity extends AppCompatActivity {
         tabLayout.setupWithViewPager(viewPager);
 //        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.ashitanohikari);
+        mediaPlayer = MediaPlayer.create(this, R.raw.ashitanohikari);
         mediaPlayer.start(); // no need to call prepare(); create() does that for you
     }
+
     private void addTabs(ViewPager viewPager){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new WeatherAndForecastFragment(), "Hanoi");
@@ -68,6 +73,7 @@ public class WeatherActivity extends AppCompatActivity {
         public ViewPagerAdapter(FragmentManager manager){
             super(manager);
         }
+
         @Override
         public Fragment getItem(int position) {
             return fragmentList.get(position);
@@ -88,6 +94,32 @@ public class WeatherActivity extends AppCompatActivity {
         }
     }
 
+    //for inflating the menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.tool_bar, menu);
+        return true;
+    }
+
+//    response to actions
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.refresh:
+                Intent intent = getIntent();
+                finish();
+                mediaPlayer.stop();
+                startActivity(intent);
+                return true;
+            case R.id.setting:
+                super.onBackPressed();
+                mediaPlayer.stop();
+                startActivity(new Intent(this, PrefActivity.class));
+            default:
+                super.onOptionsItemSelected(item);
+        }
+        return false;
+    }
 
     @Override
     protected  void onStart(){
