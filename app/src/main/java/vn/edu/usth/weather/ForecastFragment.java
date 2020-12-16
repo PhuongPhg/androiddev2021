@@ -1,5 +1,6 @@
 package vn.edu.usth.weather;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -66,6 +67,7 @@ public class ForecastFragment extends Fragment {
         };
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -75,7 +77,8 @@ public class ForecastFragment extends Fragment {
         view.setBackgroundColor(getResources().getColor(R.color.colorBack));
 
         LinearLayout llmain = (LinearLayout) view.findViewById(R.id.linearParent);
-        String[] idList = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+        int[] idList = {R.string.mon, R.string.tue, R.string.wed, R.string.thurs, R.string.fri, R.string.sat, R.string.sunday};
+        int[] status = {R.string.sun, R.string.halfsun, R.string.cloudy, R.string.windy, R.string.rain};
         int[] iconSet = {R.drawable.sun, R.drawable.enoughsunny,R.drawable.cloud, R.drawable.windy, R.drawable.rain,};
 
         for(int i =0 ; i<idList.length; i++) {
@@ -89,13 +92,14 @@ public class ForecastFragment extends Fragment {
             ll.setLayoutParams(param);
 
             TextView txt = new TextView(this.getContext());
-            txt.setText(idList[i]);
+            txt.setText(getResources().getString(idList[i]));
             LinearLayout.LayoutParams paramDay = new LinearLayout.LayoutParams(
-                    0, LayoutParams.MATCH_PARENT, 1.0f
+                    0, LayoutParams.MATCH_PARENT, 2.0f
             );
-            txt.setTextSize(20);
+            txt.setTextSize(19);
             txt.setGravity(Gravity.CENTER);
             txt.setLayoutParams(paramDay);
+            txt.setTextColor(getResources().getColor(R.color.secondaryTextColor));
             ll.addView(txt);
 
             int degreeMin = (int)(Math.random()*(35-15+1)+15);
@@ -122,11 +126,13 @@ public class ForecastFragment extends Fragment {
             ll.addView(imgWeather);
 
             TextView place = new TextView(this.getContext());
-            place.setText("Hanoi City\n"+degreeMin+"°C - "+degreeMax+"°C");
-            place.setTextSize(20);
-            place.setGravity(Gravity.LEFT);
+            place.setText(getResources().getString(status[random])+"\n"+degreeMin+"°C - "+degreeMax+"°C");
+            place.setTextSize(19);
+//            place.setTextSize(getResources().getDimension(R.dimen.body1));
+            place.setGravity(Gravity.CENTER);
+            place.setTextColor(getResources().getColor(R.color.secondaryTextColor));
             LinearLayout.LayoutParams paramPlace = new LinearLayout.LayoutParams(
-                    0, LayoutParams.WRAP_CONTENT, 1.0f
+                    0, LayoutParams.WRAP_CONTENT, 2.0f
             );
             place.setLayoutParams(paramPlace);
             ll.addView(place);

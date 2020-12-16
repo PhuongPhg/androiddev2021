@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="headline1">93sp</dimen>
+    <dimen name="headline2">58sp</dimen>
+    <dimen name="headline3">46sp</dimen>
+    <dimen name="headline4">33sp</dimen>
+    <dimen name="headline5">23sp</dimen>
+    <dimen name="headline6">19sp</dimen>
+    <dimen name="body1">15sp</dimen>
+</resources>
