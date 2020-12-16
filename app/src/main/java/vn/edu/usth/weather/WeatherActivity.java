@@ -52,8 +52,8 @@ public class WeatherActivity extends AppCompatActivity {
     }
     private void addTabs(ViewPager viewPager){
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new ForecastFragment(), "Hanoi");
-        adapter.addFragment(new WeatherFragment(), "Ho Chi Minh");
+        adapter.addFragment(new WeatherAndForecastFragment(), "Hanoi");
+        adapter.addFragment(new WeatherAndForecastFragment(), "Ho Chi Minh");
         adapter.addFragment(new WeatherAndForecastFragment(), "Da Nang");
         viewPager.setAdapter(adapter);
     }
