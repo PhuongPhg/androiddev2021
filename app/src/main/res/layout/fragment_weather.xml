@@ -3,21 +3,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".WeatherFragment">
+    tools:context=".WeatherFragment"
+    android:layout_weight="1"
+    android:id="@+id/weather_fragemnt">
 
     <!-- TODO: Update blank fragment layout -->
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <RelativeLayout
-        android:background="@drawable/frame9"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="40dp">
+        >
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hanoi"
+                android:id="@+id/plsShow"
                 android:textSize="17dp"
                 android:layout_alignParentRight="true"
                 android:paddingRight="15dp"/>
@@ -33,6 +34,9 @@
             android:layout_height="match_parent"
             android:src="@drawable/cloud"
             android:layout_centerInParent="true"/>
+<!--        <ImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent/-->
     </RelativeLayout>
 </ScrollView>
 </FrameLayout>

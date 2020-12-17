@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,18 +56,30 @@ public class WeatherAndForecastFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+//        Bundle param = getArguments();
+//        String title = param.getString("data");
+//        mParam1 = getString(title);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+//        Bundle argsBundle = getActivity().getArguments();
         Fragment forecastFrag = new ForecastFragment();
         Fragment weatherFrag = new WeatherFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.add(R.id.fragWeatherandForecast, weatherFrag )
-                .add(R.id.fragWeatherandForecast, forecastFrag).commit();
+//        transaction.add(R.id.fragWeatherandForecast, weatherFrag )
+//                .add(R.id.fragWeatherandForecast, forecastFrag).commit();
+        final Fragment fragment = getChildFragmentManager().findFragmentById(R.id.weather_fragemnt);
+
+        Bundle param = getArguments();
+        String title = param.getString("data");
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_weather_and_forecast, container, false);
+        View view = inflater.inflate(R.layout.fragment_weather_and_forecast, container, false);
+        TextView pls = (TextView) view.findViewById(R.id.plsShow);
+        pls.setText(title);
+        return view;
     }
 }

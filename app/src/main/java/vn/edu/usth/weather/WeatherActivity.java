@@ -8,9 +8,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 
+import android.os.Environment;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -22,6 +24,12 @@ import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,6 +66,7 @@ public class WeatherActivity extends AppCompatActivity {
 
         mediaPlayer = MediaPlayer.create(this, R.raw.ashitanohikari);
         mediaPlayer.start(); // no need to call prepare(); create() does that for you
+
     }
 
     private void addTabs(ViewPager viewPager){
@@ -85,6 +94,9 @@ public class WeatherActivity extends AppCompatActivity {
         }
 
         public void addFragment(Fragment fragment, String title){
+            Bundle argsBundle = new Bundle();
+            argsBundle.putString("data", title);
+            fragment.setArguments(argsBundle);
             fragmentList.add(fragment);
             fragmentTitleList.add(title);
         }
@@ -138,6 +150,7 @@ public class WeatherActivity extends AppCompatActivity {
     protected void onPause(){
         super.onPause();
         Toast.makeText(getApplicationContext(), "onPause() call", Toast.LENGTH_LONG).show();
+        mediaPlayer.stop();
     }
     @Override
     protected void onStop(){
