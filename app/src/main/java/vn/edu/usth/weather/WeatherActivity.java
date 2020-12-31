@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.media.MediaPlayer;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -18,6 +19,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.text.PrecomputedText;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +37,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -123,7 +126,7 @@ public class WeatherActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.refresh:
-                refresh();
+                new task().execute();
 //                Intent intent = getIntent();
 //                finish();
 //                mediaPlayer.stop();
@@ -137,38 +140,52 @@ public class WeatherActivity extends AppCompatActivity {
                 super.onOptionsItemSelected(item);
         }
         return false;
-    }
+    };
+    private class task extends AsyncTask<Void, Void, Void>{
 
-    private void refresh() {
-        final Handler handler = new Handler(Looper.getMainLooper()){
-            @Override
-            public void handleMessage (Message msg){
-                String content = msg.getData().getString("server_response");
-                Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT).show();
-                Intent intent = getIntent();
-                finish();
-                mediaPlayer.stop();
-                startActivity(intent);
+        @Override
+        protected Void doBackground(Void... voids) {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e){
+                e.printStackTrace();
             }
+            return null;
         };
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-                Bundle bundle = new Bundle();
-                bundle.putString("server_response", "Refresh now!");
 
-                Message msg = new Message();
-                msg.setData(bundle);
-                handler.sendMessage(msg);
-            }
-        });
-        t.start();
+        @Override
+        protected void onPostExecute(Void voids){
+            Toast.makeText(getApplicationContext(), "Refresh now!", Toast.LENGTH_SHORT).show();
+        }
     }
+//        final Handler handler = new Handler(Looper.getMainLooper()){
+//            @Override
+//            public void handleMessage (Message msg){
+//                String content = msg.getData().getString("server_response");
+//                Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT).show();
+//                Intent intent = getIntent();
+//                finish();
+//                mediaPlayer.stop();
+//                startActivity(intent);
+//            }
+//        };
+//        Thread t = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    Thread.sleep(5000);
+//                } catch (InterruptedException e){
+//                    e.printStackTrace();
+//                }
+//                Bundle bundle = new Bundle();
+//                bundle.putString("server_response", "Refresh now!");
+//
+//                Message msg = new Message();
+//                msg.setData(bundle);
+//                handler.sendMessage(msg);
+//            }
+//        });
+//        t.start();
 
 
     @Override
