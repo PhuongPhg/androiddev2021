@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.ImageReader;
 import android.media.MediaPlayer;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -32,6 +33,10 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.ImageRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabLayout;
 
 import java.io.BufferedInputStream;
@@ -131,7 +136,8 @@ public class WeatherActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item){
         switch (item.getItemId()){
             case R.id.refresh:
-                new task().execute();
+//                new task().execute();
+                volleyFunc();
 //                Intent intent = getIntent();
 //                finish();
 //                mediaPlayer.stop();
@@ -145,7 +151,28 @@ public class WeatherActivity extends AppCompatActivity {
                 super.onOptionsItemSelected(item);
         }
         return false;
-    };
+    }
+
+    private void volleyFunc() {
+        RequestQueue queue = Volley.newRequestQueue(this);
+
+        Response.Listener<Bitmap> listener =
+                new Response.Listener<Bitmap>() {
+                    @Override
+                    public void onResponse(Bitmap response) {
+                        ImageView iv = (ImageView) findViewById(R.id.logo);
+                        iv.setImageBitmap(response);
+                    }
+                };
+        ImageRequest imagerequest = new ImageRequest(
+                "https://usth.edu.vn/uploads/chuong-trinh/2017_01/logo-moi_2.png",
+                listener, 0, 0, ImageView.ScaleType.CENTER,
+                Bitmap.Config.ARGB_8888, null
+        );
+        queue.add(imagerequest);
+    }
+
+    ;
     private class task extends AsyncTask<URL, Void, Bitmap>{
     Bitmap bitmap;
         @Override
@@ -182,34 +209,6 @@ public class WeatherActivity extends AppCompatActivity {
             logo.setImageBitmap(bitmap);
         }
     }
-//        final Handler handler = new Handler(Looper.getMainLooper()){
-//            @Override
-//            public void handleMessage (Message msg){
-//                String content = msg.getData().getString("server_response");
-//                Toast.makeText(getApplicationContext(), content, Toast.LENGTH_SHORT).show();
-//                Intent intent = getIntent();
-//                finish();
-//                mediaPlayer.stop();
-//                startActivity(intent);
-//            }
-//        };
-//        Thread t = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Thread.sleep(5000);
-//                } catch (InterruptedException e){
-//                    e.printStackTrace();
-//                }
-//                Bundle bundle = new Bundle();
-//                bundle.putString("server_response", "Refresh now!");
-//
-//                Message msg = new Message();
-//                msg.setData(bundle);
-//                handler.sendMessage(msg);
-//            }
-//        });
-//        t.start();
 
 
     @Override
