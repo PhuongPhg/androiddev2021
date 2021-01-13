@@ -74,7 +74,7 @@ public class ForecastFragment extends Fragment {
         // Inflate the layout for this fragment
 //        return inflater.inflate(R.layout.fragment_forecast, container, false);
         View view = inflater.inflate(R.layout.fragment_forecast, container, false);
-        view.setBackgroundColor(getResources().getColor(R.color.colorBack));
+//        view.setBackgroundColor(getResources().getColor(R.color.colorBack));
 
         LinearLayout llmain = (LinearLayout) view.findViewById(R.id.linearParent);
         int[] idList = {R.string.mon, R.string.tue, R.string.wed, R.string.thurs, R.string.fri, R.string.sat, R.string.sunday};

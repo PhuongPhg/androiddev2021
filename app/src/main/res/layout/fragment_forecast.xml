@@ -8,44 +8,54 @@
     tools:context=".ForecastFragment">
 
     <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:paddingHorizontal="25dp"
+        android:id="@+id/logo"
+        tools:ignore="InvalidId"
+        android:alpha="0.5"/>
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/linearParent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:orientation="vertical"
-        android:paddingBottom="20dp">
+        <LinearLayout
+            android:id="@+id/linearParent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="0dp"-->
-<!--            android:layout_margin="20dp"-->
-<!--            android:orientation="horizontal"-->
-<!--            android:layout_weight="1">-->
-<!--            <TextView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Monday"-->
-<!--                android:textSize="20dp"/>-->
-<!--            <ImageView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/sun"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:layout_weight="1"/>-->
-<!--            <TextView-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="Hanoi City\n30°C"-->
-<!--                android:layout_weight="2"-->
-<!--                android:paddingLeft="10dp"-->
-<!--                android:textSize="20dp"/>-->
-<!--        </LinearLayout>-->
-    </LinearLayout>
-</ScrollView>
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="0dp"-->
+            <!--            android:layout_margin="20dp"-->
+            <!--            android:orientation="horizontal"-->
+            <!--            android:layout_weight="1">-->
+            <!--            <TextView-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:text="Monday"-->
+            <!--                android:textSize="20dp"/>-->
+            <!--            <ImageView-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:src="@drawable/sun"-->
+            <!--                android:layout_gravity="center"-->
+            <!--                android:layout_weight="1"/>-->
+            <!--            <TextView-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:text="Hanoi City\n30°C"-->
+            <!--                android:layout_weight="2"-->
+            <!--                android:paddingLeft="10dp"-->
+            <!--                android:textSize="20dp"/>-->
+            <!--        </LinearLayout>-->
+        </LinearLayout>
+    </ScrollView>
 </FrameLayout>
