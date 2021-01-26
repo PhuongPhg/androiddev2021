@@ -1,5 +1,6 @@
 package vn.edu.usth.weather;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -80,6 +82,7 @@ public class WeatherAndForecastFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_weather_and_forecast, container, false);
         TextView pls = (TextView) view.findViewById(R.id.plsShow);
         pls.setText(title);
+
         return view;
     }
 }
