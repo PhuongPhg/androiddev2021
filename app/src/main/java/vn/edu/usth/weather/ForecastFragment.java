@@ -90,6 +90,7 @@ public class ForecastFragment extends Fragment {
             );
             param.setMargins(20, 20, 20, 20);
             ll.setLayoutParams(param);
+//            ll.setId(Integer.parseInt("idnow"));
 
             TextView txt = new TextView(this.getContext());
             txt.setText(getResources().getString(idList[i]));

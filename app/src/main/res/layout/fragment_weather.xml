@@ -28,12 +28,14 @@
                 android:text="30°C\nSunny"
                 android:textSize="17dp"
                 android:layout_alignParentLeft="true"
-                android:paddingLeft="15dp"/>
+                android:paddingLeft="15dp"
+                android:id="@+id/conditionCurrent"/>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/cloud"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:id="@+id/imageCurrent"/>
 <!--        <ImageView-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="match_parent/-->

@@ -12,10 +12,12 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -99,7 +101,7 @@ public class WeatherActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.refresh:
 //                new task().execute();
-//                volleyFunc();
+                volleyFunc();
                 weatherFunc();
 //                Intent intent = getIntent();
 //                finish();
@@ -127,12 +129,23 @@ public class WeatherActivity extends AppCompatActivity {
                 public void onResponse(String response) {
                     try {
                         JSONObject obj = new JSONObject(response);
-                        JSONArray current = obj.getJSONArray("current");
+                        JSONObject current = obj.getJSONObject("current");
+                        String temp = current.getString("temp_c");
+
+                        JSONObject condition = current.getJSONObject("condition");
+                        String text = condition.getString("text");
+
+                        if(text == "Overcast"){
+                            ImageView image = (ImageView) findViewById(R.id.imageCurrent);
+                            image.setImageResource(R.drawable.cloud);
+                        }
+                        TextView txt = (TextView) findViewById(R.id.conditionCurrent);
+                        txt.setText(temp+"°C\n"+text);
                         Log.d("API response", String.valueOf(current));
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-
                 }
             };
         StringRequest stringRequest = new StringRequest(Request.Method.GET, url, listener, new Response.ErrorListener() {
